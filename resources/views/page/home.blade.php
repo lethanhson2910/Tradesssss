@@ -77,11 +77,11 @@
                                     @endif
 
                                     <div class="single-item-header">
-                                        <a href="product.html"><img style="width:250px;height:300px;" src="source/image/product/{{$new->image}}" alt=""></a>
+                                        <a target="_self" href="{{route('f.home.productdetail',$new->id)}}"><img style="width:250px;height:300px;" src="source/image/product/{{$new->image}}" alt=""></a>
                                     </div>
                                     <div class="single-item-body">
                                         <p class="single-item-title">{{$new->name}}</p>
-                                        <p class="single-item-price">
+                                        <p class="single-item-price" style="font-size:18px;">
                                             @if ($new->promotion_price==0)
                                             <span class="flash-detail">{{number_format($new->unit_price)}} đồng</span>
                                             @else
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="single-item-caption">
                                         <a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-                                        <a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+                                        <a class="beta-btn primary" href="{{route('f.home.productdetail',$new->id)}}">Details <i class="fa fa-chevron-right"></i></a>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
@@ -123,19 +123,19 @@
                                       </div>
                                       @endif
                                         <div class="single-item-header">
-                                            <a href="product.html"><img style="width:250px;height:300px;" src="source/image/product/{{$p_s->image}}" alt=""></a>
+                                            <a target="_self" href="{{route('f.home.productdetail',$new->id)}}"><img style="width:250px;height:300px;" src="source/image/product/{{$p_s->image}}" alt=""></a>
                                         </div>
                                         <div class="single-item-body">
                                             <p class="single-item-title">{{$p_s->name}}</p>
 
-                                            <p class="single-item-price">
-                                                <span class="flash-del    ">{{number_format($new->unit_price)}} đồng</span>
+                                            <p class="single-item-price" style="font-size:18px;">
+                                                <span class="flash-del">{{number_format($new->unit_price)}} đồng</span>
                                                 <span class="flash-sale">{{number_format($new->promotion_price)}} đồng</span>
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
                                             <a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-                                            <a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+                                            <a  target="_self" class="beta-btn primary" href="{{route('f.home.productdetail',$new->id)}}">Details <i class="fa fa-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -151,5 +151,15 @@
 
                 </div> <!-- .main-content -->
             </div> <!-- #content -->
-        </div> <!-- .container -->
+        </div>
+
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $(".page-link").each(function() {
+                // checks if its the same on the address bar
+                $(this).attr('target','_self');
+
+            });
+          });
+        </script>
         @endsection

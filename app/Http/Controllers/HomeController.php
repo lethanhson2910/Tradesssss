@@ -19,9 +19,11 @@ class HomeController extends Controller
         return view('page.home',compact('slide','new_product','product_sale'));
 
     }
-    public function getProductdetail()
+    public function getProductdetail(Request $request)
     {
-        return view('page.detail');
+        $product_detail = Product::where('id',$request->id)->first();
+        $related_product = Product::where('category_id',$product_detail->category_id)->paginate(3);
+        return view('page.detail',compact('product_detail','related_product'));
     }
     public function getSignup()
     {

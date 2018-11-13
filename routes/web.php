@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('home','HomeController@getHome')->name('f.home.home');
-Route::get('productdetail','HomeController@getProductdetail')->name('f.home.productdetail');
+Route::get('productdetail/{id}','HomeController@getProductdetail')->name('f.home.productdetail');
 Route::get('signup','HomeController@getSignup')->name('f.home.signup');
 Route::get('aboutus','HomeController@getAboutus')->name('f.home.aboutus');
 Route::get('checkout','HomeController@getCheckout')->name('f.home.checkout');
