@@ -90,15 +90,17 @@
       <div class="visible-xs clearfix"></div>
       <nav class="main-menu">
         <ul class="l-inline ov">
-          <li><a href="index.html">Trang chủ</a></li>
-          <li><a href="#">Sản phẩm</a>
+          <li><a target="_self" href="{{route('f.home.home')}}">Trang chủ</a></li>
+          <li><a href="#">Loại sản phẩm</a>
             <ul class="sub-menu">
-              <li><a href="product_type.html">Sản phẩm 1</a></li>
-              <li><a href="product_type.html">Sản phẩm 2</a></li>
-              <li><a href="product_type.html">Sản phẩm 4</a></li>
+              @foreach ($loai_sp as $ls)
+                  <li><a target="_self" href="{{route('f.home.category',$ls->id)}}">{{$ls->name}}</a></li>
+              @endforeach
+
+
             </ul>
           </li>
-          <li><a href="about.html">Giới thiệu</a></li>
+          <li><a href="{{route('f.home.aboutus')}}">Giới thiệu</a></li>
           <li><a href="contacts.html">Liên hệ</a></li>
         </ul>
         <div class="clearfix"></div>

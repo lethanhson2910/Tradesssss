@@ -11,10 +11,10 @@
             // checks if its the same on the address bar
             if (url == (this.href)) {
                 $(this).closest("li").addClass("active");
-				 $(this).parents('li').addClass('parent-active');
+
             }
         });
-    }); 
+    });
 
 			// NUMBERS COUNTER START
                 $('.numbers').data('countToOptions', {
@@ -31,7 +31,7 @@
                     options = $.extend({}, options || {}, $this.data('countToOptions') || {});
                     $this.countTo(options);
                 } // NUMBERS COUNTER END
-		
+
 
 				var tpj=jQuery;
 				tpj.noConflict();
@@ -97,14 +97,14 @@
 
 
 if(is_touch_device()){
-        $(".portfolio-image").on('click', function(e){					
+        $(".portfolio-image").on('click', function(e){
             $(this).find('.portfolio-hover').show();
         });
     }
-    
+
     // function to check is user is on touch device
     function is_touch_device() {
-        return 'ontouchstart' in window // works on most browsers 
+        return 'ontouchstart' in window // works on most browsers
         || 'onmsgesturechange' in window; // works on ie10
     }
 
@@ -134,10 +134,10 @@ if(is_touch_device()){
         });
     })();
 
-			
-			
 
-try {		
+
+
+try {
 		if ($(".animated")[0]) {
             $('.animated').css('opacity', '0');
 			}
@@ -155,7 +155,7 @@ try {
 	} catch(err) {
 
 		}
-		
+
 var wow = new WOW(
   {
     boxClass:     'wow',      // animated element css class (default is wow)
@@ -164,7 +164,7 @@ var wow = new WOW(
     mobile:       false        // trigger animations on mobile devices (true is default)
   }
 );
-wow.init();	
+wow.init();
 // color box
 
 //color
@@ -189,12 +189,10 @@ wow.init();
         jQuery(this).addClass('icon-angle-left');
       }
     });
-	
+
 
 });
-			
-			
+
+
 
             /* ]]> */
-
-

@@ -4,34 +4,22 @@
 			$(function() {
         // this will get the full URL at the address bar
         var url = window.location.href;
-
+        
         // passes on every "a" tag
+        console.log(url);
         $(".main-menu a").each(function() {
             // checks if its the same on the address bar
             if (url == (this.href)) {
                 $(this).closest("li").addClass("active");
-				 $(this).parents('li').addClass('parent-active');
+                console.log(this.href);
             }
         });
-    }); 
-	 
-				
+
+    });
+
+
 			// NUMBERS COUNTER START
-                $('.numbers').data('countToOptions', {
-                    formatter: function(value, options) {
-                        return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
-                    }
-                });
 
-                // start timer
-                $('.timer').each(count);
-
-                function count(options) {
-                    var $this = $(this);
-                    options = $.extend({}, options || {}, $this.data('countToOptions') || {});
-                    $this.countTo(options);
-                } // NUMBERS COUNTER END
-		
 
 				var tpj=jQuery;
 				tpj.noConflict();
@@ -97,10 +85,10 @@
 
 
 
-			
-			
 
-try {		
+
+
+try {
 		if ($(".animated")[0]) {
             $('.animated').css('opacity', '0');
 			}
@@ -118,7 +106,7 @@ try {
 	} catch(err) {
 
 		}
-		
+
 var wow = new WOW(
   {
     boxClass:     'wow',      // animated element css class (default is wow)
@@ -152,12 +140,10 @@ wow.init();
         jQuery(this).addClass('icon-angle-left');
       }
     });
-	
+
 
 	});
 
-	
+
 
             /* ]]> */
-
-

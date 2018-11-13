@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home','HomeController@getHome');
-Route::get('productdetail','HomeController@getProductdetail');
-Route::get('signup','HomeController@getSignup');
-Route::get('aboutus','HomeController@getAboutus');
-Route::get('checkout','HomeController@getCheckout');
-Route::get('login','HomeController@getLogin');
-Route::get('category','HomeController@getCategory');
+Route::get('home','HomeController@getHome')->name('f.home.home');
+Route::get('productdetail','HomeController@getProductdetail')->name('f.home.productdetail');
+Route::get('signup','HomeController@getSignup')->name('f.home.signup');
+Route::get('aboutus','HomeController@getAboutus')->name('f.home.aboutus');
+Route::get('checkout','HomeController@getCheckout')->name('f.home.checkout');
+Route::get('login','HomeController@getLogin')->name('f.home.login');
+Route::get('category/{type}','HomeController@getCategory')->name('f.home.category');

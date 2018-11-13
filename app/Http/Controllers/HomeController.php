@@ -8,13 +8,16 @@ use App\Product;
 use App\Category;
 
 
+
 class HomeController extends Controller
 {
     public function getHome()
     {
         $slide = Slide::all();
-        $new_product = Product::where('new', 1)->get();
-        return view('page.home',compact('slide','new_product'));
+        $new_product = Product::where('new', 1)->paginate(2,['*'],'newproductpage');
+        $product_sale = Product::where('promotion_price','<>',0)->paginate(2,['*'],'productsalepage');
+        return view('page.home',compact('slide','new_product','product_sale'));
+
     }
     public function getProductdetail()
     {
@@ -36,8 +39,12 @@ class HomeController extends Controller
     {
         return view('page.checkout');
     }
-    public function getCategory()
+    public function getCategory($type)
     {
-        return view('page.type');
+      $product_type = Product::where('category_id',$type)->paginate(2);
+      $another_product = Product::where('category_id','<>',$type)->paginate(3);
+      $typee =Category::all();
+      $typename = Category::where('id',$type)->first();
+        return view('page.type',compact('product_type','another_product','typee','typename'));
     }
 }
