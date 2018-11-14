@@ -1,10 +1,5 @@
 @extends('master')
-@section('title','Home')
-@section('slider')
-@include('layouts.slider')
-
-
-@endsection
+@section('title','Search')
 @section('content')
 
 <!-- THE FIRST SLIDE -->
@@ -62,12 +57,12 @@
                     <div class="beta-products-list">
                         <h4>Sản phẩm mới</h4>
                         <div class="beta-products-details">
-                            <p class="pull-left">Tìm thấy {{count($new_product)}} sản phẩm</p>
+                            <p class="pull-left">Tìm thấy {{count($product)}} sản phẩm</p>
                             <div class="clearfix"></div>
                         </div>
 
                         <div class="row">
-                            @foreach ($new_product as $new)
+                            @foreach ($product as $new)
                             <div class="col-sm-3">
                                 <div class="single-item">
                                     @if ($new->promotion_price!=0)
@@ -103,47 +98,12 @@
 
                         </div> <!-- .beta-products-list -->
                         <div class="row">
-                            {{$new_product->links()}}
+                      
                         </div>
                         <div class="space50">&nbsp;</div>
 
                         <div class="beta-products-list">
-                            <h4>Sản phẩm khuyến mãi</h4>
-                            <div class="beta-products-details">
-                                <p class="pull-left">Tìm thấy {{count($product_sale)}} sản phẩm</p>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="row">
-                                @foreach ($product_sale as $p_s)
-                                <div class="col-sm-3">
-                                    <div class="single-item">
-                                      @if ($new->promotion_price!=0)
-                                      <div class="ribbon-wrapper">
-                                          <div class="ribbon sale">Sale</div>
-                                      </div>
-                                      @endif
-                                        <div class="single-item-header">
-                                            <a target="_self" href="{{route('f.home.productdetail',$new->id)}}"><img style="width:250px;height:300px;" src="source/image/product/{{$p_s->image}}" alt=""></a>
-                                        </div>
-                                        <div class="single-item-body">
-                                            <p class="single-item-title">{{$p_s->name}}</p>
 
-                                            <p class="single-item-price" style="font-size:18px;">
-                                                <span class="flash-del">{{number_format($new->unit_price)}} đồng</span>
-                                                <span class="flash-sale">{{number_format($new->promotion_price)}} đồng</span>
-                                            </p>
-                                        </div>
-                                        <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-                                            <a  target="_self" class="beta-btn primary" href="{{route('f.home.productdetail',$new->id)}}">Details <i class="fa fa-chevron-right"></i></a>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div> <!-- .beta-products-list -->
-                            <div class="row">
-                                {{$product_sale->links()}}
                             </div>
                         </div>
                     </div> <!-- end section with sidebar and main content -->

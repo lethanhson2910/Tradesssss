@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Slide;
 use App\Product;
 use App\Category;
-
+use App\User;
+use Auth;
+use Hash;
 
 
 class HomeController extends Controller
@@ -19,19 +21,43 @@ class HomeController extends Controller
         return view('page.home',compact('slide','new_product','product_sale'));
 
     }
-    public function getProductdetail(Request $request)
+    public function getProductdetail()
     {
-        $product_detail = Product::where('id',$request->id)->first();
-        $related_product = Product::where('category_id',$product_detail->category_id)->paginate(3);
-        return view('page.detail',compact('product_detail','related_product'));
+        return view('page.detail');
     }
     public function getSignup()
     {
         return view('page.signup');
     }
+    protected function postSignup(Request $request)
+    {
+          $user = new User;
+          $user->email = $request->email;
+          $user->full_name = $request->name;
+          $user->password = Hash::make($request->password);
+          $user->save();
+          return redirect()->route('f.home.signup')->with('thanhcong', 'Đã tạo tài khoản thành công');
+    }
     public function getLogin()
     {
         return view('page.login');
+    }
+    public function postLogin(Request $request)
+    {
+      $credentials = $request->only('email','password');
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->route('f.home.home');
+
+      }  else {
+        return redirect()->route('f.home.login')->with('thatbai', 'Đăng nhập thất bại');
+        }
+
+    }
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect()->route('f.home.home');
     }
     public function getAboutus()
     {
@@ -49,4 +75,10 @@ class HomeController extends Controller
       $typename = Category::where('id',$type)->first();
         return view('page.type',compact('product_type','another_product','typee','typename'));
     }
+    public function getSearch(Request $request)
+    {
+        $product = Product::where('name','like','%'.$request->search.'%')->orWhere('unit_price',$request->search)->get();
+        return view('page.search',compact('product'));
+    }
+
 }
