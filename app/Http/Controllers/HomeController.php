@@ -9,7 +9,7 @@ use App\Category;
 use App\User;
 use Auth;
 use Hash;
-
+use Cart;
 
 class HomeController extends Controller
 {
@@ -63,10 +63,6 @@ class HomeController extends Controller
     {
         return view('page.aboutus');
     }
-    public function getCheckout()
-    {
-        return view('page.checkout');
-    }
     public function getCategory($type)
     {
       $product_type = Product::where('category_id',$type)->paginate(2);
@@ -80,5 +76,6 @@ class HomeController extends Controller
         $product = Product::where('name','like','%'.$request->search.'%')->orWhere('unit_price',$request->search)->get();
         return view('page.search',compact('product'));
     }
+
 
 }

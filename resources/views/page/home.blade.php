@@ -92,7 +92,15 @@
                                         </p>
                                     </div>
                                     <div class="single-item-caption">
-                                        <a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
+                                      <form  action="{{route('f.cart.cart')}}" method="post">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="id" value="{{$new->id}}">
+                                        <input type="hidden" name="name" value="{{$new->name}}">
+                                        <input type="hidden" name="unit_price" value="{{$new->unit_price}}">
+                                        <button type="submit" class="add-to-cart pull-left"></button>
+                                        {{-- <a class="add-to-cart pull-left" href=""><i class="fa fa-shopping-cart"></i></a> --}}
+                                      </form>
+
                                         <a target="_self" class="beta-btn primary" href="{{route('f.home.productdetail',$new->id)}}">Details <i class="fa fa-chevron-right"></i></a>
                                         <div class="clearfix"></div>
                                     </div>

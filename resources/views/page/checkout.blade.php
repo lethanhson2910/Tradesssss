@@ -59,29 +59,49 @@
         <div class="col-sm-6">
           <div class="your-order">
             <div class="your-order-head"><h5>Đơn hàng của bạn</h5></div>
-            <div class="your-order-body" style="padding: 0px 10px">
-              <div class="your-order-item">
-                <div>
-                <!--  one item	 -->
-                  <div class="media">
-                    <img width="25%" src="assets/dest/images/shoping1.jpg" alt="" class="pull-left">
-                    <div class="media-body">
-                      <p class="font-large">Men's Belt</p>
-                      <span class="color-gray your-order-info">Color: Red</span>
-                      <span class="color-gray your-order-info">Size: M</span>
-                      <span class="color-gray your-order-info">Qty: 1</span>
+            @if (session()->has('success_message'))
+              <div class="alert alert-success">
+                  {{session()->get('success_message')}}
+              </div>
+            @endif
+
+              <div class="your-order-body" style="padding: 0px 10px">
+                <div class="your-order-item">
+                  <div>
+                      @foreach (Cart::content() as $item)
+                  <!--  one item	 -->
+                    <div class="media">
+                      <img width="25%" src="source/image/product/{{$item->image}}" alt="" class="pull-left">
+                      <div class="media-body">
+                        <p class="font-large">{{$item->name}}</p>
+                        <span class="color-gray your-order-info">Giá:{{$item->price}}</span>
+                        <span>
+                          <select class="color-gray your-order-info" name="unit">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+
+                        </span>
+                      </div>
                     </div>
+                              @endforeach
+                  <!-- end one item -->
                   </div>
-                <!-- end one item -->
+                  <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
+
+                <div class="your-order-item">
+                  <div class="pull-left"><p class="your-order-f18">Tổng tiền:</p></div>
+                  <div class="pull-right"><h5 class="color-black">$235.00</h5></div>
+                  <div class="clearfix"></div>
+                </div>
               </div>
-              <div class="your-order-item">
-                <div class="pull-left"><p class="your-order-f18">Tổng tiền:</p></div>
-                <div class="pull-right"><h5 class="color-black">$235.00</h5></div>
-                <div class="clearfix"></div>
-              </div>
-            </div>
+
+
+
+
             <div class="your-order-head"><h5>Hình thức thanh toán</h5></div>
 
             <div class="your-order-body">
