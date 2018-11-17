@@ -29,3 +29,14 @@ Route::get('search','HomeController@getSearch')->name('f.home.search');
 
 Route::get('cart','CartController@getCart')->name('f.cart.cart');
 Route::post('cart','CartController@postCart')->name('f.cart.cart');
+Route::delete('cart/{id}','CartController@getDelete')->name('f.cart.delete');
+
+
+//Admin
+Route::get('admin/home','AdminController@getHome')->name('f.admin.home');
+Route::get('admin/create','AdminController@getCreate')->name('f.admin.create');
+Route::post('admin/create','AdminController@postCreate')->name('f.admin.create');
+Route::get('admin/listproduct','AdminController@getList')->name('f.admin.list');
+Route::get('admin/edit/{id}','AdminController@getEdit')->name('f.admin.edit');
+Route::post('admin/edit/{id}','AdminController@postEdit')->name('f.admin.edit');
+Route::get('admin/delete/{id}','AdminController@getDelete')->name('f.admin.delete');

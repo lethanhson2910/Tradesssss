@@ -59,11 +59,11 @@
         <div class="col-sm-6">
           <div class="your-order">
             <div class="your-order-head"><h5>Đơn hàng của bạn</h5></div>
-            @if (session()->has('success_message'))
+            {{-- @if (session()->has('success_message'))
               <div class="alert alert-success">
                   {{session()->get('success_message')}}
               </div>
-            @endif
+            @endif --}}
 
               <div class="your-order-body" style="padding: 0px 10px">
                 <div class="your-order-item">
@@ -75,15 +75,21 @@
                       <div class="media-body">
                         <p class="font-large">{{$item->name}}</p>
                         <span class="color-gray your-order-info">Giá:{{$item->price}}</span>
-                        <span>
-                          <select class="color-gray your-order-info" name="unit">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                        <span class="color-gray your-order-info"> Số lượng:
+                          <select class="quantity" name="unit">
+                            <option selected="">1</option>
+                            <option >2</option>
+                            <option >3</option>
+                            <option >4</option>
                           </select>
-
                         </span>
+                        <form class="cart-table-actions" action="{{route('f.cart.delete',$item->rowId)}}" method="post">
+                            {{csrf_field()}}
+                            {{method_field('delete')}}
+                            <button type="submit" name="delete">Remove</button>
+
+                        </form>
+
                       </div>
                     </div>
                               @endforeach
@@ -94,7 +100,7 @@
 
                 <div class="your-order-item">
                   <div class="pull-left"><p class="your-order-f18">Tổng tiền:</p></div>
-                  <div class="pull-right"><h5 class="color-black">$235.00</h5></div>
+                  <div class="pull-right"><h5 class="color-black">{{Cart::total()}}</h5></div>
                   <div class="clearfix"></div>
                 </div>
               </div>
