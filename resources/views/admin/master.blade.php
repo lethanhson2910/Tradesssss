@@ -25,6 +25,7 @@
 
     <!-- Custom Fonts -->
     <link href="admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="admin/vendor/jquery/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Admin</a>
+                <a target="_self" class="navbar-brand" href={{route('f.admin.home')}}>Admin</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -277,10 +278,10 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i>List Product</a>
+                            <a target="_self" href={{route('f.admin.list')}}><i class="fa fa-table fa-fw"></i>List Product</a>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Create Product</a>
+                            <a target="_self" href={{route('f.admin.create')}}><i class="fa fa-edit fa-fw"></i>Create Product</a>
                         </li>
 
                     </ul>
@@ -297,7 +298,6 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="admin/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="admin/vendor/bootstrap/js/bootstrap.min.js"></script>

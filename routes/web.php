@@ -29,7 +29,8 @@ Route::get('search','HomeController@getSearch')->name('f.home.search');
 
 Route::get('cart','CartController@getCart')->name('f.cart.cart');
 Route::post('cart','CartController@postCart')->name('f.cart.cart');
-Route::delete('cart/{id}','CartController@getDelete')->name('f.cart.delete');
+Route::patch('cart/{id}','CartController@getUpdate')->name('f.cart.update');
+Route::get('deletecart/{id}','CartController@getDelete')->name('f.cart.delete');
 
 
 //Admin

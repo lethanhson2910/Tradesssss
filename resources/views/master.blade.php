@@ -25,7 +25,7 @@
 
 
 	<!-- Header -->
-		@include('layouts.header')
+	@include('layouts.header')
 	<!-- End Header -->
 	<div class="rev-slider">
 	<div class="fullwidthbanner-container">

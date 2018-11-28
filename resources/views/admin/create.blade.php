@@ -45,8 +45,8 @@
                         </div>
                         <div class="form-group">
                             <label>Image</label>
-                            <input type="file" name="image" onchange="changeImg(this)">
-                            <img style="width:250px;height:300px;" src="source/image/product/>
+                            <input type="file" id="image" name="image" >
+                            <img id="imageshow" style="width:100px;height:100px;">
                         </div>
                         <div class="form-group">
                             <label>Unit</label>
@@ -78,4 +78,23 @@
 </div>
 <!-- /.row -->
 </div>
+<script>
+  $(document).ready(function(){
+    function readURL(input) {
+
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#imageshow').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $('#image').on('change',function(){
+      readURL(this);
+    });
+  });
+</script>
 @endsection

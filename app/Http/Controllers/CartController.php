@@ -8,8 +8,15 @@ use App\Product;
 class CartController extends Controller
 {
 
+    public function getUpdate(Request $request,$id)
+    {
+      Cart::update($id, $request->quantity);
+      session()->flash('success_message','Quantity was updated successfully!');
+      return response()->json(['success'=> true]);
+    }
     public function getCart()
     {
+
         return view('page.cart');
     }
 

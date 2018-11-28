@@ -33,15 +33,15 @@
                           @foreach ($product as $pd)
                             <tr>
                               <th>{{$pd->name}}</th>
-                              {{-- <th>{{$pd->categories->name}}</th> --}}
+                              <th>{{$pd->category->name}}</th>
                               <th>{{$pd->description}}</th>
                               <th>{{$pd->unit_price}}</th>
                               <th>{{$pd->promotion_price}}</th>
-                              <th><img style="width:250px;height:300px;" src="source/image/product/{{$pd->image}}" alt=""></th>
+                              <th><img style="width:50px;height:50px;" src="source/image/product/{{$pd->image}}" alt=""></th>
                               <th>{{$pd->unit}}</th>
                               <th>{{$pd->new}}</th>
                               <th>
-                                 <a href='{{route('f.admin.edit',$pd->id)}}'> Edit</a>
+                                 <a target="_self" href='{{route('f.admin.edit',$pd->id)}}'> Edit</a>
                                  <a target="_self" href='{{route('f.admin.delete',$pd->id)}}'> Delete</a>
                              </th>
                             </tr>
